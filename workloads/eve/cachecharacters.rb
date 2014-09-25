@@ -34,7 +34,7 @@ module EveJobs
       training = EAAL::API.new(keyid, vcode, 'char').skillInTraining(characterID: cid)
       r = Redis.new
       if training.skillInTraining == '1'
-        skill = training.trainingTypeID
+        skill = r.hget("weechat:eve:skills", training.trainingTypeID)
         level = training.trainingToLevel
         finish = seconds_to_units(Time.parse(training.trainingEndTime) - Time.now)
         queue = EAAL::API.new(keyid, vcode, 'char').SkillQueue(characterID: cid).skillqueue
