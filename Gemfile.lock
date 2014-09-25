@@ -1,0 +1,49 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
+    coderay (1.1.0)
+    eaal (0.1.12)
+      faraday (>= 0.8.4)
+      hpricot (>= 0.6)
+      memcache-client (>= 1.7.1)
+    em-synchrony (1.0.3)
+      eventmachine (>= 1.0.0.beta.1)
+    eventmachine (1.0.3)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    hiredis (0.5.2)
+    hpricot (0.8.6)
+    memcache-client (1.8.5)
+    method_source (0.8.2)
+    msgpack (0.5.8)
+    multipart-post (2.0.0)
+    nido (0.0.1)
+    ohm (2.0.1)
+      msgpack
+      nido
+      redic
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    redic (1.1.1)
+      hiredis
+    redis (3.1.0)
+    slop (3.6.0)
+    sucker_punch (1.2.1)
+      celluloid (~> 0.15.2)
+    timers (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  eaal
+  em-synchrony
+  hiredis
+  ohm
+  pry
+  redis
+  sucker_punch

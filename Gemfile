@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem 'sucker_punch'
+gem 'redis'
+gem 'hiredis'
+gem 'em-synchrony'
+gem 'eaal'
+gem 'ohm'
+gem 'pry'
