@@ -45,7 +45,7 @@ module EveJobs
         finish = nil
       end
       r = Redis.new
-      r.hset("weechat:eve:#{user}", character[:name], "#{character[:name]} | S: #{skill[:skill]} #{skill[:level]} - #{skill[:finish]} | Q: #{queue[:qlength]} - #{queue[:qfinish]}")
+      r.hset("weechat:eve:#{user}", name, "#{name} | S: #{skill} #{level} - #{finish} | Q: #{qlength} - #{qfinish}")
     end
   end
   class CacheAccount
