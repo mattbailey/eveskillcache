@@ -32,6 +32,7 @@ module EveJobs
 
     def perform(user, keyid, vcode, cid, name)
       training = EAAL::API.new(keyid, vcode, 'char').skillInTraining(characterID: cid)
+      r = Redis.new
       if training.skillInTraining == '1'
         skill = training.trainingTypeID
         level = training.trainingToLevel
@@ -39,13 +40,12 @@ module EveJobs
         queue = EAAL::API.new(keyid, vcode, 'char').SkillQueue(characterID: cid).skillqueue
         qfinish = seconds_to_units(Time.parse(queue.last.endTime) - Time.now)
         qlength = queue.size
+        r.hset("weechat:eve:#{user}", name, "#{name} | S: #{skill} #{level} - #{finish} | Q: #{qlength} - #{qfinish}")
       else
-        skill = nil
-        level = nil
-        finish = nil
+        begin
+          r.hdel("weechat:eve:#{user}", name)
+        end
       end
-      r = Redis.new
-      r.hset("weechat:eve:#{user}", name, "#{name} | S: #{skill} #{level} - #{finish} | Q: #{qlength} - #{qfinish}")
     end
   end
   class CacheAccount
